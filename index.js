@@ -19,6 +19,9 @@ function handleClick() {
 
     //the 'makeSound' function is a function used in releasing sound for the web app. so the makeSound functioin was passed added to the buttonInnerHtmlto release sound when any particular button was clicked.
     makeSound(buttonInnerHtml)
+    
+//the buttion animation is a method used to add style to any button or key that was pressed
+    buttonAnimation(buttonInnerHtml)
 
 
 }
@@ -32,11 +35,25 @@ document.addEventListener("keypress", function(event) {
 
 // the makeSound function was also addded to this function.
 makeSound(event.key);
+
+//the buttion animation is a method used to add style to any button or key that was pressed
+buttonAnimation(event.key)
 // the .key is a key word in keypress event listener which tells us which keyboard key was pressed.
 
 
 
 })
+
+// we want to create an animation for when any key is pressed.
+
+function buttonAnimation (currentKey) {
+
+    const activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed")
+    setTimeout (function () {
+        activeButton.classList.remove("pressed");
+    }, 100)
+}
 
 // EXECUTING AND RELEASING SOUND.
 
@@ -79,8 +96,7 @@ function makeSound (key) {
             break;
 
 
-        default: console.log(buttonInnerHtml);
+        default: console.log(buttonInnerHTML);
         
-            break;
     }
 }
